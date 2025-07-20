@@ -4,7 +4,7 @@ import icon from "../assets/Main1.png";
 const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div>
+    <div className="inline-block">
       <div className="fixed inset-x-0 top-0 z-10 border-b border-gray-950/5 dark:border-white/10">
         <div className="bg-white dark:bg-gray-950">
           <div className="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
@@ -87,12 +87,12 @@ const Navigation = () => {
                       type="search"
                       id="default-search"
                       className="block w-full h-10 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Search Mockups, Logos..."
+                      placeholder="Search Pokemon by Name"
                       required
                     />
                     <button
                       type="submit"
-                      className="text-white absolute end-2.5 bottom-2 bg-[#D32F2F] hover:bg-[#B71C1C] focus:ring-4 focus:outline-none focus:ring-[#FF5252] font-medium rounded-lg text-sm px-3 py-1 dark:bg-[#B71C1C] dark:hover:bg-[#D32F2F] dark:focus:ring-[#FF5252]"
+                      className="text-white cursor-pointer absolute end-2.5 bottom-2 bg-[#D32F2F] hover:bg-[#B71C1C] focus:ring-4 focus:outline-none focus:ring-[#FF5252] font-medium rounded-lg text-sm px-3 py-1 dark:bg-[#B71C1C] dark:hover:bg-[#D32F2F] dark:focus:ring-[#FF5252]"
                     >
                       Search
                     </button>
@@ -139,12 +139,12 @@ const Navigation = () => {
                         type="search"
                         id="default-search-mobile"
                         className="block w-full h-10 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search Mockups, Logos..."
+                        placeholder="Search Pokemon by Name"
                         required
                       />
                       <button
                         type="submit"
-                        className="text-white absolute end-2.5 bottom-2 bg-[#D32F2F] hover:bg-[#B71C1C] focus:ring-4 focus:outline-none focus:ring-[#FF5252] font-medium rounded-lg text-sm px-3 py-1 dark:bg-[#B71C1C] dark:hover:bg-[#D32F2F] dark:focus:ring-[#FF5252]"
+                        className="text-white cursor-pointer absolute end-2.5 bottom-2 bg-[#D32F2F] hover:bg-[#B71C1C] focus:ring-4 focus:outline-none focus:ring-[#FF5252] font-medium rounded-lg text-sm px-3 py-1 dark:bg-[#B71C1C] dark:hover:bg-[#D32F2F] dark:focus:ring-[#FF5252]"
                       >
                         Search
                       </button>
