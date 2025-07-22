@@ -15,7 +15,7 @@ A modern, interactive Pokédex web application built with React and Vite, allowi
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://your-demo-link.vercel.app) *(Add your deployed link here)*
+[View Live Demo](https://react-pokefinder.vercel.app/) _(Add your deployed link here)_
 
 ## 🛠️ Technologies Used
 
@@ -25,37 +25,7 @@ A modern, interactive Pokédex web application built with React and Vite, allowi
 - **CSS3** - Styling and animations
 - **PokéAPI** - RESTful API for Pokémon data
 - **ESLint** - Code linting and formatting
-
-
-
-## 🏗️ Project Structure
-
-```
-React-Pokedex/
-├── public/
-│   └── vite.svg
-├── src/
-│   ├── components/
-│   │   ├── PokemonCard/
-│   │   ├── PokemonDetail/
-│   │   ├── SearchBar/
-│   │   └── ...
-│   ├── hooks/
-│   │   └── usePokemon.js
-│   ├── services/
-│   │   └── pokemonAPI.js
-│   ├── styles/
-│   │   └── ...
-│   ├── utils/
-│   │   └── ...
-│   ├── App.jsx
-│   ├── App.css
-│   └── main.jsx
-├── index.html
-├── package.json
-├── vite.config.js
-└── README.md
-```
+- **Tailwind CSS** - Utility-first framework
 
 ## 🎮 How to Use
 
@@ -73,8 +43,6 @@ This application uses the [PokéAPI](https://pokeapi.co/) to fetch Pokémon data
 - **Pokemon Endpoint**: `/pokemon/{id or name}/`
 - **Species Endpoint**: `/pokemon-species/{id or name}/`
 
-
-
 ## 🐛 Known Issues
 
 - None at the moment. Please report any bugs you find!
@@ -90,10 +58,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [React Team](https://reactjs.org/) - For the amazing React library
 - [Vite Team](https://vitejs.dev/) - For the blazing fast build tool
 
-
-
 ---
 
 ⭐ If you found this project helpful, please give it a star on GitHub!
 
-*Built with ❤️ and ⚡ Vite*
+_Built with ❤️ and ⚡ Vite_
