@@ -4,15 +4,18 @@ const PokemonContext = createContext();
 
 export function PokemonProvider({ children }) {
   const [selectedType, setSelectedType] = useState("all");
-  const [selectedRarity, setSelectedRarity] = useState("all");
+  const [selectedSpecies, setSelectedSpecies] = useState("all");
+  const [searchInput, setSearchInput] = useState(null);
 
   return (
     <PokemonContext.Provider
       value={{
         selectedType,
         setSelectedType,
-        selectedRarity,
-        setSelectedRarity,
+        selectedSpecies,
+        setSelectedSpecies,
+        searchInput,
+        setSearchInput,
       }}
     >
       {children}

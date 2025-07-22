@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Filters from "./components/Filters";
 import Cards from "./components/Cards";
 import { PokemonProvider } from "./contexts/PokemonContext";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Hero />
         <Filters />
         <Cards />
+        <Footer />
       </PokemonProvider>
     </div>
   );

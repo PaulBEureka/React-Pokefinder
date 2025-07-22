@@ -1,16 +1,14 @@
-import { useEffect } from "react";
 import { usePokemonContext } from "../contexts/PokemonContext";
 
 const Filters = () => {
-  const { selectedType, setSelectedType, selectedRarity, setSelectedRarity } =
-    usePokemonContext();
+  const { setSelectedType, setSelectedSpecies } = usePokemonContext();
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
   };
 
-  const handleRarityChange = (event) => {
-    setSelectedRarity(event.target.value);
+  const handleSpeciesChange = (event) => {
+    setSelectedSpecies(event.target.value);
   };
   return (
     <div className="filter-container grid grid-cols-1 sm:flex sm:flex-wrap sm:gap-4 gap-2 p-4 w-full max-w-full overflow-x-auto">
@@ -47,21 +45,21 @@ const Filters = () => {
         </select>
       </div>
       <div className="filter-item w-full sm:w-[40%] h-12 min-w-0 m-3">
-        <label htmlFor="pokemonRarity" className="text-black">
-          Rarity
+        <label htmlFor="pokemonSpecies" className="text-black">
+          Species
         </label>
         <select
-          id="pokemonRarity"
-          name="pokemonRarity"
+          id="pokemonSpecies"
+          name="pokemonSpecies"
           className="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white rounded-md p-2 w-[80%] min-w-0"
           defaultValue="all"
-          onChange={handleRarityChange}
+          onChange={handleSpeciesChange}
         >
-          <option value="all">All Rarities</option>
-          <option value="common">Common</option>
-          <option value="uncommon">Uncommon</option>
-          <option value="rare">Rare</option>
+          <option value="all">All Species</option>
+          <option value="regular">Regular</option>
           <option value="legendary">Legendary</option>
+          <option value="mythical">Mythical</option>
+          <option value="baby">Baby</option>
         </select>
       </div>
     </div>

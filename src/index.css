@@ -41,11 +41,19 @@
   width: 60px;
 }
 
+@media screen and (max-width: 676px) {
+  .filter-item {
+    width: 100%;
+  }
+}
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
   margin: 30px;
+  padding: 30px;
+  min-height: 300px;
 }
 
 .pokemon-card {

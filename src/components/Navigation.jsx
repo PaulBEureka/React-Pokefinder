@@ -1,29 +1,30 @@
 import React, { useState } from "react";
 import icon from "../assets/Main1.png";
+import { usePokemonContext } from "../contexts/PokemonContext";
 
 const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { setSearchInput } = usePokemonContext();
+  const onSearchChange = (input) => {
+    const searchValue = input.target.value;
+    setSearchInput(searchValue);
+  };
   return (
     <div className="inline-block">
       <div className="fixed inset-x-0 top-0 z-10 border-b border-gray-950/5 dark:border-white/10">
         <div className="bg-white dark:bg-gray-950">
           <div className="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
             <div className="flex items-center gap-4">
-              <a
-                className="shrink-0 text-white font-bold inline-block"
-                href="/"
-              >
-                <div className="flex items-center gap-2 no-wrap">
-                  <p>Pokedex</p>
-                  <span className="flex items-center justify-center rounded-full bg-gray-950/2 p-1.5 dark:bg-white/5">
-                    <img
-                      src={icon}
-                      alt="pokedex-icon"
-                      className="w-8 mask-radial-at-center flex-shrink-0 rounded-full"
-                    />
-                  </span>
-                </div>
-              </a>
+              <div className="flex items-center gap-2 text-white font-bold">
+                <p>PokéFinder</p>
+                <span className="flex items-center justify-center rounded-full bg-gray-950/2 p-1.5 dark:bg-white/5">
+                  <img
+                    src={icon}
+                    alt="pokedex-icon"
+                    className="w-8 flex-shrink-0 rounded-full"
+                  />
+                </span>
+              </div>
             </div>
             {/* Hamburger menu for mobile */}
             <div className="flex items-center gap-6">
@@ -87,18 +88,18 @@ const Navigation = () => {
                       type="search"
                       id="default-search"
                       className="block w-full h-10 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Search Pokemon by Name"
+                      placeholder="Search Pokémon by Name"
+                      onChange={(input) => onSearchChange(input)}
                       required
                     />
-                    <button
-                      type="submit"
-                      className="text-white cursor-pointer absolute end-2.5 bottom-2 bg-[#D32F2F] hover:bg-[#B71C1C] focus:ring-4 focus:outline-none focus:ring-[#FF5252] font-medium rounded-lg text-sm px-3 py-1 dark:bg-[#B71C1C] dark:hover:bg-[#D32F2F] dark:focus:ring-[#FF5252]"
-                    >
-                      Search
-                    </button>
                   </div>
                 </div>
-                <a aria-label="GitHub repository" href="">
+                <a
+                  aria-label="GitHub repository"
+                  href="https://github.com/PaulBEureka/React-Pokedex"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <svg
                     viewBox="0 0 20 20"
                     className="size-5 fill-black/40 dark:fill-gray-400"
@@ -139,18 +140,17 @@ const Navigation = () => {
                         type="search"
                         id="default-search-mobile"
                         className="block w-full h-10 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search Pokemon by Name"
+                        placeholder="Search Pokémon by Name"
                         required
                       />
-                      <button
-                        type="submit"
-                        className="text-white cursor-pointer absolute end-2.5 bottom-2 bg-[#D32F2F] hover:bg-[#B71C1C] focus:ring-4 focus:outline-none focus:ring-[#FF5252] font-medium rounded-lg text-sm px-3 py-1 dark:bg-[#B71C1C] dark:hover:bg-[#D32F2F] dark:focus:ring-[#FF5252]"
-                      >
-                        Search
-                      </button>
                     </div>
                   </div>
-                  <a aria-label="GitHub repository" href="">
+                  <a
+                    aria-label="GitHub repository"
+                    href="https://github.com/PaulBEureka/React-Pokedex"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <svg
                       viewBox="0 0 20 20"
                       className="size-5 fill-black/40 dark:fill-gray-400"
