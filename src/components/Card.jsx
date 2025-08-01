@@ -48,7 +48,7 @@ const Card = ({ pokemon }) => {
     <div className={`pokemon-card`}>
       <div className={`card-header ${mainType}`}>
         <span className="pokemon-name">{details.name}</span>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="flex flex-wrap gap-3">
           <span className="pokemon-type">{mainType}</span>
           <span>{getPokemonCry()}</span>
         </div>
