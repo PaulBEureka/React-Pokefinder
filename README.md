@@ -1,4 +1,4 @@
-# 🌟 React Pokedex
+# 🌟 React-Pokefinder
 
 A modern, interactive Pokédex web application built with React and Vite, allowing users to explore and discover Pokémon from all generations. This application provides detailed information about each Pokémon, including their stats, abilities, types, and more.
 
@@ -15,7 +15,7 @@ A modern, interactive Pokédex web application built with React and Vite, allowi
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://react-pokefinder.vercel.app/) _(Add your deployed link here)_
+[View Live Demo](https://react-pokefinder.vercel.app/) 
 
 ## 🛠️ Technologies Used
 
