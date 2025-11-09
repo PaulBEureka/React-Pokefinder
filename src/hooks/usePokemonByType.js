@@ -6,10 +6,9 @@ import { usePokemonSpeciesData } from "./usePokemonSpeciesData";
 export function usePokemonByType(limit = 20) {
   const [offset, setOffset] = useState(0);
   const [typeName, setTypeName] = useState("all");
-  const [speciesFilter, setSpeciesFilter] = useState(null); // "legendary", etc.
+  const [speciesFilter, setSpeciesFilter] = useState(null);
   const { searchInput } = usePokemonContext();
 
-  // Get all species data
   const { data: speciesMap, isLoading: speciesLoading } =
     usePokemonSpeciesData();
 
@@ -27,7 +26,6 @@ export function usePokemonByType(limit = 20) {
 
       const baseData = await response.json();
 
-      // No more individual API calls - just lookup from the species map
       const detailedPokemon = baseData.pokemon.map((entry) => {
         const name = entry.pokemon.name;
         const speciesData = speciesMap?.get(name);
@@ -46,20 +44,15 @@ export function usePokemonByType(limit = 20) {
     staleTime: 10 * 60 * 1000,
   });
 
-  // Filter all Pokémon from the type
   const filteredData = useMemo(() => {
     if (!data) return [];
 
     return data.filter((pokemon) => {
-      // First, check if the pokemon matches the search input
       const matchesSearch =
         !searchInput ||
         pokemon.name.toLowerCase().includes(searchInput.toLowerCase());
 
-      // If it doesn't match the search, exclude it regardless of species filter
       if (!matchesSearch) return false;
-
-      // Now apply species filter to those that match the search
       if (speciesFilter === "legendary") return pokemon.is_legendary;
       if (speciesFilter === "mythical") return pokemon.is_mythical;
       if (speciesFilter === "baby") return pokemon.is_baby;
@@ -73,12 +66,11 @@ export function usePokemonByType(limit = 20) {
     });
   }, [data, speciesFilter, searchInput]);
 
-  // Paginate the filtered data
   const paginatedPokemon = useMemo(() => {
     return filteredData.slice(offset, offset + limit);
   }, [filteredData, offset, limit]);
 
-  const goToPageType = (page) => {
+  const goToPage = (page) => {
     setOffset((page - 1) * limit);
   };
 
@@ -87,27 +79,27 @@ export function usePokemonByType(limit = 20) {
     setTypeName(type);
   };
 
-  const setSpeciesType = (type) => {
+  const setSpecies = (type) => {
     setOffset(0);
     setSpeciesFilter(type);
   };
 
   const totalFiltered = filteredData.length;
-  const totalPagesType = Math.ceil(totalFiltered / limit) || 1;
+  const totalPages = Math.ceil(totalFiltered / limit) || 1;
   const hasNextPage = offset + limit < totalFiltered;
   const hasPrevPage = offset > 0;
   const currentPage = Math.floor(offset / limit) + 1;
 
   return {
     data: paginatedPokemon,
-    isLoading: isLoading || speciesLoading, // Include species loading state
+    isLoading: isLoading || speciesLoading,
     error,
-    goToPageType,
-    setSpeciesType,
+    goToPage,
+    setSpecies,
     setType,
     hasNextPage,
     hasPrevPage,
     currentPage,
-    totalPagesType,
+    totalPages,
   };
 }

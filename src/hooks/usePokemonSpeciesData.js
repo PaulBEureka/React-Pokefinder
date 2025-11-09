@@ -11,7 +11,6 @@ export function usePokemonSpeciesData() {
 
       const speciesList = await response.json();
 
-      // Fetch detailed data for all species
       const speciesData = await Promise.all(
         speciesList.results.map(async (species) => {
           try {
@@ -37,10 +36,9 @@ export function usePokemonSpeciesData() {
         })
       );
 
-      // Convert to Map for O(1) lookup
       return new Map(speciesData.map((species) => [species.name, species]));
     },
-    staleTime: Infinity, // Cache forever
+    staleTime: Infinity,
     cacheTime: Infinity,
   });
 }

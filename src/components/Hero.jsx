@@ -9,7 +9,7 @@ const Hero = () => {
           ⚡ PokéFinder ⚡
         </h1>
         <p className="text-white text-center align-center">
-          Catch ’Em All, Know ’Em All!
+          Catch 'Em All, Know 'Em All!
         </p>
       </div>
     </div>

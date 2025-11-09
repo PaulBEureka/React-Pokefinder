@@ -8,14 +8,12 @@ export function usePokemonList(limit = 20) {
   const [speciesFilter, setSpeciesFilter] = useState(null); // "legendary", etc.
   const { searchInput } = usePokemonContext();
 
-  // Get all species data
   const { data: speciesMap, isLoading: speciesLoading } =
     usePokemonSpeciesData();
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["allPokemon"],
     queryFn: async () => {
-      // First, fetch the entire list of Pokémon names
       const res = await fetch(
         "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
       );
@@ -23,7 +21,6 @@ export function usePokemonList(limit = 20) {
 
       const base = await res.json();
 
-      // No more individual API calls - just lookup from the species map
       const detailedResults = base.results.map((pokemon) => {
         const speciesData = speciesMap?.get(pokemon.name);
 
@@ -37,24 +34,20 @@ export function usePokemonList(limit = 20) {
 
       return detailedResults;
     },
-    enabled: !!speciesMap, // Only run when species data is available
+    enabled: !!speciesMap,
     staleTime: 10 * 60 * 1000,
   });
 
-  // Filter all Pokémon from the type
   const filteredData = useMemo(() => {
     if (!data) return [];
 
     return data.filter((pokemon) => {
-      // First, check if the pokemon matches the search input
       const matchesSearch =
         !searchInput ||
         pokemon.name.toLowerCase().includes(searchInput.toLowerCase());
 
-      // If it doesn't match the search, exclude it regardless of species filter
       if (!matchesSearch) return false;
 
-      // Now apply species filter to those that match the search
       if (speciesFilter === "legendary") return pokemon.is_legendary;
       if (speciesFilter === "mythical") return pokemon.is_mythical;
       if (speciesFilter === "baby") return pokemon.is_baby;
@@ -68,29 +61,29 @@ export function usePokemonList(limit = 20) {
     });
   }, [data, speciesFilter, searchInput]);
 
-  // Paginate filtered data
   const paginatedData = useMemo(() => {
     return filteredData.slice(offset, offset + limit);
   }, [filteredData, offset, limit]);
 
-  const goToPageAll = (page) => {
+  const goToPage = (page) => {
     setOffset((page - 1) * limit);
   };
 
-  const setSpeciesAll = (type) => {
+  const setSpecies = (type) => {
     setSpeciesFilter(type);
-    setOffset(0); // reset to page 1
+    setOffset(0);
   };
 
   return {
     data: paginatedData,
-    isLoading: isLoading || speciesLoading, // Include species loading state
+    isLoading: isLoading || speciesLoading,
     error,
-    goToPageAll,
-    setSpeciesAll,
+    goToPage,
+    setSpecies,
+    setType: () => {},
     hasNextPage: offset + limit < filteredData.length,
     hasPrevPage: offset > 0,
     currentPage: Math.floor(offset / limit) + 1,
-    totalPagesAll: Math.ceil(filteredData.length / limit),
+    totalPages: Math.ceil(filteredData.length / limit),
   };
 }
